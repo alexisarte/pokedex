@@ -2,6 +2,7 @@ const API_URL = 'https://pokeapi.co/api/v2/';
 const LIMIT = 20;
 const PAGE_URL = API_URL + `pokemon/?limit=${LIMIT}&offset=`;
 const POKEMONES = 1154;
+var next = 0;
 
 const $ = s => document.querySelector(s);
 
@@ -35,6 +36,13 @@ function removePokemon() {
     const pokemonData = $('.pokemon-data');
     while (pokemonData.firstChild != null) {
         pokemonData.removeChild(pokemonData.firstChild);
+    }
+}
+
+function removePokemonName() {
+    const pokemonData = $('.pokemon-list');
+    while (pokemonData.lastChild != null) {
+        pokemonData.removeChild(pokemonData.lastChild);
     }
 }
 
@@ -81,23 +89,25 @@ function pages() {
 
 function pokemonsList() {
     let options = $('.options');
-    $('.pokemon-list').innerHTML = '';
+    removePokemonName();
     let url = PAGE_URL + options.value * LIMIT;
     fetchPokemons(url);
 }
 
 function nextOrPrevious(e) {
     if (e.target.tagName === 'BUTTON') {
-        const items = document.querySelectorAll('li');
-        let index = 0;
-        for (let i = 0; i < items.length; i++) {
-            if (items[i].textContent === window.pokemonName.textContent) {
-                index = i;
-            }
+        if (condition) {
+            
         }
-        removePokemon();
-        e.target.id === 'next' ? index++ : index--;
-        fetchPokemon(items[index].textContent);
+        // e.target.id === 'next' ? index++ : index--;
+        // fetchPokemon(items[index].textContent);
+        const options = $('.options');
+        removePokemonName();
+        options.value = Number(options.value) + 1;
+        console.log('olaaaaaaaaaaaaaaaaaaaaaaaaaaaa');
+        console.log(options.value);
+        const url = PAGE_URL + options.value * LIMIT;
+        fetchPokemons(url);
     }
 }
 

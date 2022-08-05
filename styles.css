@@ -12,7 +12,7 @@ body {
     align-items: center;
 }
 
-.pokemon-list {
+.pokemon-list-container {
     background-color: gray;
     text-align: justify;    
     list-style-type: none;
