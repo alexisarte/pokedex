@@ -2,7 +2,6 @@ const API_URL = 'https://pokeapi.co/api/v2/';
 const LIMIT = 20;
 const PAGE_URL = API_URL + `pokemon/?limit=${LIMIT}&offset=`;
 const POKEMONES = 1154;
-var next = 0;
 
 const $ = s => document.querySelector(s);
 
@@ -95,17 +94,11 @@ function pokemonsList() {
 }
 
 function nextOrPrevious(e) {
+    const options = $('.options');
     if (e.target.tagName === 'BUTTON') {
-        if (condition) {
-            
-        }
-        // e.target.id === 'next' ? index++ : index--;
-        // fetchPokemon(items[index].textContent);
-        const options = $('.options');
+        let  option = Number(options.value);
+        options.value = e.target.id === 'next' ? ++option : --option;
         removePokemonName();
-        options.value = Number(options.value) + 1;
-        console.log('olaaaaaaaaaaaaaaaaaaaaaaaaaaaa');
-        console.log(options.value);
         const url = PAGE_URL + options.value * LIMIT;
         fetchPokemons(url);
     }
