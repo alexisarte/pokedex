@@ -69,12 +69,12 @@ function createPokemon(pokemon) {
 
     // habilidades
     const abilities = document.createElement('p');
-    abilities.innerHTML = 'Abilities: ';
-    pokemon.abilities.forEach(a => (abilities.innerHTML += a.ability.name + ', '));
+    abilities.innerHTML = 'Abilities:';
+    pokemon.abilities.forEach(a => (abilities.innerHTML += ` ${a.ability.name} |`));
 
     // peso y altura
     const weightAndHeight = document.createElement('p');
-    weightAndHeight.innerHTML = `Weight: ${pokemon.weight} height: ${pokemon.height}`;
+    weightAndHeight.innerHTML = `Weight: ${pokemon.weight} - height: ${pokemon.height}`;
     imgContainer.appendChild(sprite);
 
     $('.pokemon-data').append(imgContainer, name, abilities, weightAndHeight);
