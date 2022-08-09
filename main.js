@@ -33,8 +33,12 @@ function showPokemonName(pokemonName) {
 
 function removePokemon() {
     const pokemonData = $('.pokemon-data');
-    while (pokemonData.firstChild != null) {
-        pokemonData.removeChild(pokemonData.firstChild);
+    const imgContainer = $('.img-container');
+    while (imgContainer.firstChild != null) {
+        imgContainer.removeChild(imgContainer.firstChild);
+    }
+    while (pokemonData.lastChild.className != 'img-container') {
+        pokemonData.removeChild(pokemonData.lastChild);
     }
 }
 
@@ -55,8 +59,8 @@ function showPokemon(e) {
 
 function createPokemon(pokemon) {
     // imagen y nombre
-    const imgContainer = document.createElement('div');
-    imgContainer.classList.add('img-container');
+    const imgContainer = document.querySelector('.img-container');
+    // imgContainer.classList.add('img-container');
     const sprite = document.createElement('img');
     sprite.src = pokemon.sprites.front_default;
     const name = document.createElement('p');
@@ -88,7 +92,7 @@ function pages() {
 
 function pokemonsList() {
     let options = $('.options');
-    removePokemonName();
+    $('.pokemon-list').innerHTML = '';
     let url = PAGE_URL + options.value * LIMIT;
     fetchPokemons(url);
 }
@@ -97,8 +101,11 @@ function nextOrPrevious(e) {
     const options = $('.options');
     if (e.target.tagName === 'BUTTON') {
         let  option = Number(options.value);
+        if ((option === 0 && e.target.id === 'previous') || (option === Math.floor(POKEMONES / LIMIT) && e.target.id === 'next')) {
+            return;
+        }
         options.value = e.target.id === 'next' ? ++option : --option;
-        removePokemonName();
+        $('.pokemon-list').innerHTML = '';
         const url = PAGE_URL + options.value * LIMIT;
         fetchPokemons(url);
     }
