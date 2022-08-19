@@ -25,10 +25,16 @@ function fetchPokemons(url) {
         .catch(err => console.log(err));
 }
 
-function showPokemonName(pokemonName) {
-    const name = document.createElement('li');
-    name.textContent = pokemonName;
-    $('.pokemon-list').appendChild(name);
+// function showPokemonName(pokemonName) {
+//     const name = document.createElement('li');
+//     name.textContent = pokemonName;
+//     $('.pokemon-list').appendChild(name);
+// }
+
+const showPokemonName = pokemonName => {
+  const name = document.createElement('li');
+  name.textContent = pokemonName;
+  $('.pokemon-list').appendChild(name);
 }
 
 function removePokemon() {
@@ -42,14 +48,7 @@ function removePokemon() {
     }
 }
 
-function removePokemonName() {
-    const pokemonData = $('.pokemon-list');
-    while (pokemonData.lastChild != null) {
-        pokemonData.removeChild(pokemonData.lastChild);
-    }
-}
-
-function showPokemon(e) {
+const showPokemon = e => {
     if (e.target.tagName === 'LI') {
         removePokemon();
         fetchPokemon(e.target.textContent);
@@ -90,12 +89,20 @@ function pages() {
     }
 }
 
+function removePokemonName() {
+  const pokemonData = $('.pokemon-list');
+  while (pokemonData.lastChild != null) {
+    pokemonData.removeChild(pokemonData.lastChild);
+  }
+}
+
 function pokemonsList() {
     let options = $('.options');
     $('.pokemon-list').innerHTML = '';
     let url = PAGE_URL + options.value * LIMIT;
     fetchPokemons(url);
 }
+
 
 function nextOrPrevious(e) {
     const options = $('.options');
@@ -105,7 +112,7 @@ function nextOrPrevious(e) {
             return;
         }
         options.value = e.target.id === 'next' ? ++option : --option;
-        $('.pokemon-list').innerHTML = '';
+        removePokemonName();
         const url = PAGE_URL + options.value * LIMIT;
         fetchPokemons(url);
     }

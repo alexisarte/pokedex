@@ -68,6 +68,10 @@ option {
     flex-direction: column;
 }
 
+.pokemon-list {
+    min-height: 570px;
+}
+
 #pokemon-container {
     width: 20%;
     min-height: 250px;
