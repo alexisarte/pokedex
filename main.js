@@ -7,13 +7,13 @@ const $ = (s) => document.querySelector(s);
 
 function fetchPokemon(name) {
   const url = `${API_URL}pokemon/${name}`;
-  console.log(url);
+  
   fetch(url)
     .then((res) => res.json())
     .then((data) => {
       createPokemon(data);
     })
-    .catch((err) => console.log(err));
+    .catch((err) => {});
 }
 
 function fetchPokemons(url) {
@@ -23,7 +23,7 @@ function fetchPokemons(url) {
       data.results.forEach((pokemon) => showPokemonName(pokemon.name));
       $(".pokemon-list").addEventListener("click", showPokemon);
     })
-    .catch((err) => console.log(err));
+    .catch((err) => {});
 }
 
 // function showPokemonName(pokemonName) {
