@@ -41,7 +41,7 @@ const showPokemonName = (pokemonName) => {
 function removePokemon() {
   const pokemonData = $(".pokemon-data");
   const imgContainer = $(".img-container");
-  while (imgContainer.firstChild != null) {
+  while (imgContainer.firstChild !== null) {
     imgContainer.removeChild(imgContainer.firstChild);
   }
   while (pokemonData.lastChild.className != "img-container") {
@@ -97,7 +97,7 @@ function pages() {
 
 function removePokemonName() {
   const pokemonData = $(".pokemon-list");
-  while (pokemonData.lastChild != null) {
+  while (pokemonData.lastChild !== null) {
     pokemonData.removeChild(pokemonData.lastChild);
   }
 }
