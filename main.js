@@ -7,7 +7,6 @@ const $ = (s) => document.querySelector(s);
 
 function fetchPokemon(name) {
   const url = `${API_URL}pokemon/${name}`;
-  
   fetch(url)
     .then((res) => res.json())
     .then((data) => {
@@ -26,12 +25,6 @@ function fetchPokemons(url) {
     .catch((err) => console.error(err));
 }
 
-// function showPokemonName(pokemonName) {
-//     const name = document.createElement('li');
-//     name.textContent = pokemonName;
-//     $('.pokemon-list').appendChild(name);
-// }
-
 const showPokemonName = (pokemonName) => {
   const name = document.createElement("li");
   name.textContent = pokemonName;
@@ -44,7 +37,7 @@ function removePokemon() {
   while (imgContainer.firstChild !== null) {
     imgContainer.removeChild(imgContainer.firstChild);
   }
-  while (pokemonData.lastChild.className != "img-container") {
+  while (pokemonData.lastChild.className !== "img-container") {
     pokemonData.removeChild(pokemonData.lastChild);
   }
 }
