@@ -13,7 +13,7 @@ function fetchPokemon(name) {
     .then((data) => {
       createPokemon(data);
     })
-    .catch((err) => {});
+    .catch((err) => console.error(err));
 }
 
 function fetchPokemons(url) {
@@ -23,7 +23,7 @@ function fetchPokemons(url) {
       data.results.forEach((pokemon) => showPokemonName(pokemon.name));
       $(".pokemon-list").addEventListener("click", showPokemon);
     })
-    .catch((err) => {});
+    .catch((err) => console.error(err));
 }
 
 // function showPokemonName(pokemonName) {
