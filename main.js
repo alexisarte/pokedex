@@ -1,6 +1,6 @@
 const API_URL = "https://pokeapi.co/api/v2/";
 const LIMIT = 20;
-const PAGE_URL = API_URL + `pokemon/?limit=${LIMIT}&offset=`;
+const PAGE_URL = `${API_URL}pokemon/?limit=${LIMIT}&offset=`;
 const POKEMONES = 1154;
 
 const $ = (s) => document.querySelector(s);
@@ -87,7 +87,7 @@ function pages() {
   for (let i = 0; i < POKEMONES / LIMIT; i++) {
     const option = document.createElement("option");
     option.value = i;
-    option.textContent = "Page " + (i + 1);
+    option.textContent = `Page ${(i + 1)}`;
     options.appendChild(option);
   }
 }
