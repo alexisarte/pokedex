@@ -83,9 +83,9 @@ function createPokemon(pokemon) {
 }
 
 function pages() {
-  let options = $(".options");
+  const options = $(".options");
   for (let i = 0; i < POKEMONES / LIMIT; i++) {
-    let option = document.createElement("option");
+    const option = document.createElement("option");
     option.value = i;
     option.textContent = "Page " + (i + 1);
     options.appendChild(option);
@@ -100,9 +100,9 @@ function removePokemonName() {
 }
 
 function pokemonsList() {
-  let options = $(".options");
+  const options = $(".options");
   $(".pokemon-list").innerHTML = "";
-  let url = PAGE_URL + options.value * LIMIT;
+  const url = PAGE_URL + options.value * LIMIT;
   fetchPokemons(url);
 }
 
