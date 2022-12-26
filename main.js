@@ -51,6 +51,7 @@ const showPokemon = (e) => {
     removePokemon();
     fetchPokemon(e.target.textContent);
     $("#pokemon-container").style.visibility = "visible";
+    $("#pokemon-container").style.display = "flex";
   }
 };
 
